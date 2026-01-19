@@ -10,6 +10,12 @@
     rel="stylesheet"
   />
 
+ <link rel="icon" href="resource/image/logo-favicon.png" type="image/png">
+<link rel="icon" type="image/png" sizes="16x16" href="resource/image/logo-favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resource/image/logo-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="resource/image/logo-favicon-48.png">
+
+
   <style>
     /* =====================
        ROOT VARIABLES
@@ -65,6 +71,56 @@
       margin: 0;
       letter-spacing: 1px;
     }
+/* Brand wrapper: logo + title side by side */
+.brand-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between logo and text */
+}
+
+/* Logo with white circle */
+.brand-logo {
+  background: white;
+  border-radius: 50%;
+  padding: 2px;       /* space inside circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;      /* same height as font */
+  height: 2.2rem;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Make h1 same height as logo for alignment */
+.brand-logo-wrapper h1 {
+  font-size: 2.2rem; /* match logo height */
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .brand-logo {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .brand-logo-wrapper h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .brand-logo-wrapper h1 {
+    font-size: 1.5rem;
+  }
+}
 
     .badge {
       background: rgba(255, 255, 255, 0.25);
@@ -356,8 +412,9 @@
     }
 
     /* =====================
-   PROFESSIONAL BACK TO TOP BUTTON
+   PROFESSIONAL BACK TO TOP BUTTON (RESIZED)
 ===================== */
+/* Base button for desktop */
 #backToTop {
   position: fixed;
   bottom: 30px;
@@ -366,10 +423,10 @@
   background: var(--primary);
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
-  display: none; /* Hidden by default */
+  display: none;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   transition: all 0.3s ease;
   display: flex;
@@ -384,10 +441,38 @@
 }
 
 #backToTop svg {
-  width: 24px;
-  height: 24px;
+  width: 40px;  /* arrow size on desktop */
+  height: 40px;
   fill: white;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  #backToTop {
+    width: 60px;     /* slightly smaller circle on tablets */
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+  #backToTop svg {
+    width: 32px;     /* arrow scales with button */
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  #backToTop {
+    width: 50px;     /* circle smaller on phones */
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+  #backToTop svg {
+    width: 28px;     /* arrow bigger relative to button */
+    height: 28px;
+  }
+}
+
 
 /* =====================
    MOBILE RESPONSIVE IMPROVEMENTS
@@ -484,164 +569,67 @@
   .faq-item p {
     font-size: 0.85rem;
   }
-
-  /* Back to top button */
-  #backToTop {
-    width: 45px;
-    height: 45px;
-    bottom: 20px;
-    right: 20px;
-  }
 }
 
-/* Extra small devices (phones) */
-@media (max-width: 480px) {
-  .brand h1 {
-    font-size: 1.5rem;
-  }
-
-  .badge {
-    font-size: 0.75rem;
-    padding: 6px 12px;
-  }
-
-  .skin-item h4 {
-    font-size: 0.9rem;
-  }
-
-  .skin-item p {
-    font-size: 0.75rem;
-  }
-
-  .skin-preview {
-    max-height: 150px;
-    width: 120px;
-  }
-
-  .kit-card-static img {
-    height: 100px;
-  }
-
-  .kit-card-static h4 {
-    font-size: 0.95rem;
-  }
-
-  .kit-card-static p {
-    font-size: 0.75rem;
-  }
-
-  .video-layout h2 {
-    font-size: 1.4rem;
-  }
-
-  .team-member img {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-    /* =====================
-   MOBILE RESPONSIVE IMPROVEMENTS
+/* =====================
+   BACK TO TOP BUTTON - PERFECT FIT
 ===================== */
-@media (max-width: 900px) {
-  /* Header & Hero */
-  header {
-    padding: 25px 5%;
-  }
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background: var(--primary);
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  display: none; /* hidden by default */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
+#backToTop:hover {
+  background: #7f2f29;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
 
-  .brand h1 {
-    font-size: 1.8rem;
-  }
+#backToTop svg {
+  width: 40px;
+  height: 40px;
+  fill: white;
+}
 
-  .badge {
-    font-size: 0.8rem;
-    padding: 8px 14px;
-  }
-
-  /* Section padding */
-  section {
-    padding: 20px 5%;
-  }
-
-  /* Skin grid */
-  .skin-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-  }
-
-  .skin-item h4 {
-    font-size: 1rem;
-  }
-
-  .skin-item p {
-    font-size: 0.8rem;
-  }
-
-  .skin-preview {
-    max-height: 180px;
-    width: 140px;
-  }
-
-  /* Makeup Kit grid */
-  .kit-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .kit-card-static img {
-    height: 120px;
-  }
-
-  .kit-card-static h4 {
-    font-size: 1rem;
-  }
-
-  .kit-card-static p {
-    font-size: 0.8rem;
-  }
-
-  /* Video layout */
-  .video-layout {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .video-layout h2 {
-    font-size: 1.6rem;
-  }
-
-  /* Team photos */
-  .team-photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .team-member img {
-    width: 90px;
-    height: 90px;
-  }
-
-  /* FAQ */
-  .faq-item strong {
-    font-size: 1rem;
-  }
-
-  .faq-item p {
-    font-size: 0.85rem;
-  }
-
-  /* Back to top button */
+/* Tablet */
+@media (max-width: 768px) {
   #backToTop {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     bottom: 20px;
     right: 20px;
+  }
+  #backToTop svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  #backToTop {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+  #backToTop svg {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -690,19 +678,24 @@
     height: 80px;
   }
 }
+
 
   </style>
 </head>
 
 <body>
   <header>
-    <div class="hero">
-      <div class="brand">
-        <h1>SkillShades</h1>
-        <span>
-          An Interactive Makeup Learning Courseware to Unleash Your Inner Beauty
-        </span>
-      </div>
+<div class="brand">
+  <div class="brand-logo-wrapper">
+    <div class="brand-logo">
+      <img src="resource/image/logo.png" alt="SkillShades Logo" />
+    </div>
+    <h1>SkillShades</h1>
+  </div>
+  <span>
+    An Interactive Makeup Learning Courseware to Unleash Your Inner Beauty
+  </span>
+</div>
       <div class="badge">
         Perfect for: Teenagers · Young Adults · Makeup Beginners
       </div>
@@ -990,10 +983,13 @@
 
   <!-- Back to Top Button -->
 <button id="backToTop" title="Back to Top">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
-    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8z"/>
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V6" />
+    <path d="M5 12l7-7 7 7" />
+    </svg>
+
 </button>
+
 
   
 
@@ -1043,8 +1039,33 @@
     }
   }
 
-  // Get the button
+  // Get the back-to-top button and the SVG inside it
 const backToTopButton = document.getElementById("backToTop");
+const arrowSvg = backToTopButton.querySelector("svg");
+
+// Make arrow bigger dynamically
+function resizeArrow(size) {
+  arrowSvg.setAttribute("width", size);
+  arrowSvg.setAttribute("height", size);
+}
+
+// Example: make arrow 40px on desktop, 30px on tablet, 24px on mobile
+function adjustArrowSize() {
+  const width = window.innerWidth;
+  if (width >= 900) {
+    resizeArrow(40);
+  } else if (width >= 480) {
+    resizeArrow(30);
+  } else {
+    resizeArrow(24);
+  }
+}
+
+// Initial resize
+adjustArrowSize();
+
+// Update on window resize
+window.addEventListener("resize", adjustArrowSize);
 
 // Show/hide button on scroll
 window.addEventListener("scroll", () => {
@@ -1060,8 +1081,8 @@ backToTopButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+
 </script>
 
 </body>
 </html>
-
